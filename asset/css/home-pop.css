@@ -1,0 +1,66 @@
+
+	*{font-family: calibri}
+	.popup, .back{
+		top: 0; left: 0;
+		 width: 100%; height: 0;}
+	.popup{ z-index: 2;
+		position: fixed; overflow-y: auto;overflow-x: hidden
+	}
+	/*.popup, .back, .front{display: none; transition:2s;}*/
+	.popup, .front, .back{z-index: 0; } /**/
+	.popup, .front{top: -20px;}
+
+	.popup .back{
+		opacity: 0;
+		z-index: 3;
+		position: absolute;
+		 top: 0; left: 0;
+		background-color:rgb(69, 67, 67);
+	
+	}
+	.popup .front{
+		opacity: 0;
+		z-index: 4;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		background-color: #fff;
+		padding: 10px;
+	}
+	.popup .front .head{
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		border-bottom: 1px solid black;
+	}
+
+	.popup .front .head .title{
+		font-size: 3em;
+		position: relative;
+		font-weight: 700;
+		float: left;
+	}
+	/*.popup .front .head .close{
+		float: right;
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+		top: 0; right: 10px;
+		height: 40px;
+		border-radius: 5px;
+		width: 40px;
+		background: rgba(51, 38, 38, 0.17);
+		border: 1px solid rgb(42, 3, 65);
+	}*/
+	/*.popup .front .head .close:hover{background: black}*/
+	.popupclose{cursor: pointer;}
+	.popup .front .body{padding: 10px; padding-right: 30px}
+	/*.x1, .x2{
+		position: absolute;
+		background-color: red;
+		width: 2px;
+		height: 40px;}
+	.x1{transform: rotate(45deg);right: 20px}
+	.x2{transform: rotate(-90deg);right: 0;top: 0}*/
+	.popup .front .foot{border-top: 1px solid black}
