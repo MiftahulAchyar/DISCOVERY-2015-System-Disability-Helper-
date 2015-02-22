@@ -1,0 +1,45 @@
+<IfModule mod_rewrite.c>
+
+    # menghilangkan List direktori
+	Options +FollowSymLinks -Indexes
+	RewriteEngine on
+
+	# Jika tampilpesan 404
+	#AllowOverride All
+	RewriteBase /sdh/
+
+	# Option untuk domain
+	# !PENTING GUNAKAN HANYA SALAH SATU PILIHAN SAJA
+
+	# Option 1: mengubah "www.domain.com menjadi domain.com" Secara otomatis.
+	#RewriteCond %{HTTPS} !=on
+	#RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+	# Option 2: mengganti "domain.com menjadi www.domain.com" Secara otomatis.
+	#RewriteCond %{HTTPS} !=on
+	#RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+	#RewriteCond %{HTTP_HOST} (.+)$ [NC]
+	#RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
+
+	# Tanpa index.php di URL
+	RewriteCond %{HTTP:X-Requested-With}	!^XMLHttpRequest$
+	RewriteCond %{THE_REQUEST}				^[^/]*/index\.php [NC]
+	RewriteRule ^index\.php(.*)$			$1 [R=301,NS,L]
+
+	# Menjauhkan User dari system Codeigniter dan Git/Mercurial data
+	# RedirectMatch 403 ^/(system|\.git|\.hg).*$
+
+	# Mengirim request via index.php (lagi, tidak jika itu benar-benar file atau folder yang ada)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+
+	<IfModule mod_php5.c>
+		RewriteRule ^(.*)$ index.php/$1 [L]
+	</IfModule>
+
+	<IfModule !mod_php5.c>
+		RewriteRule ^(.*)$ index.php?/$1 [L]
+	</IfModule>
+
+</IfModule>
