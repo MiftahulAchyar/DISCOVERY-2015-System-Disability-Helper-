@@ -55,12 +55,8 @@
 	}*/
 	/*.popup .front .head .close:hover{background: black}*/
 	.popupclose{cursor: pointer;}
-	.popup .front .body{padding: 10px; padding-right: 30px}
-	/*.x1, .x2{
-		position: absolute;
-		background-color: red;
-		width: 2px;
-		height: 40px;}
-	.x1{transform: rotate(45deg);right: 20px}
-	.x2{transform: rotate(-90deg);right: 0;top: 0}*/
+	.popup .front .body{
+		padding: 10px; padding-right: 30px
+	}
+	
 	.popup .front .foot{border-top: 1px solid black}
